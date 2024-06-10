@@ -34,22 +34,3 @@
     outline: none;
   }
   
-  .mic-button {
-    background-color: #007bff;
-    border: none;
-    padding: 10px;
-    margin-left: 5px;
-    border-radius: 4px;
-    cursor: pointer;
-    color: white;
-  }
-  
-  .mic-button.active {
-    background-color: red;
-  }
-  
-  .mic-button.static {
-    background-color: #007bff;
-  }
-  
-  

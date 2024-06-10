@@ -11,7 +11,7 @@ if (!apiKey) {
 // Initialize the OpenAI client with the API key
 const openai = new OpenAI({apiKey: apiKey, dangerouslyAllowBrowser: true});
 
-const openapi =async (prompt)=> {
+const openapi = async (prompt) => {
   try {
     // Make a request to the OpenAI API
     const completion = await openai.chat.completions.create({
@@ -21,7 +21,7 @@ const openapi =async (prompt)=> {
       "role": "system",
       "content": [
         {
-          "text": "\nAnswer the following questions with their corresponding number only, match the prompt to the nearest question. If you receive a completely unexpected question, return '7':\n[1.⁠ ⁠How do I check into my room? \nAns: '1']\n[2.⁠ ⁠⁠How do I open my door lock?\nAns: '2']\n[3.⁠ ⁠⁠When can I checkin and can I checkin early?\nAns: '3']\n[4.⁠ ⁠⁠how do I find my room?\nAns: '4']\n[5.⁠ ⁠⁠how can I connect to WiFi?\nAns: '5]\n[6.⁠ ⁠⁠how can I order extra cleaning?\nAns: '6']",
+          "text": "\nAnswer the following questions with their corresponding number only, match the prompt to the nearest question. If you receive a completely unexpected question, return '7':\n[1.⁠ ⁠How do I check into my room? \nAns: '1']\n[2.⁠ ⁠⁠How do I open my door lock?\nAns: '2']\n[3.⁠ ⁠⁠When can I checkin and can I checkin early?\nAns: '3']\n[4.⁠ ⁠⁠how do I find my room?\nAns: '4']\n[5.⁠ ⁠⁠how can I connect to WiFi?\nAns: '5]\n[6.⁠ ⁠⁠how can I order extra cleaning?\nAns: '6']\nonly answer with a number and no quotes",
           "type": "text"
         }
       ]

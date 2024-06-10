@@ -12,7 +12,7 @@ const deepgram = async (audioBlob) => {
   // Define request headers
   const headers = {
     Authorization: `Token ${apiKey}`,
-    "Content-Type": "audio/wav",
+    "Content-Type": "audio/webm",
   };
 
   // Make the POST request using axios

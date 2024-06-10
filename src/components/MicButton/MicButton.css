@@ -1,0 +1,21 @@
+.mic-button {
+    background-color: #007bff;
+    border: none;
+    padding: 10px;
+    margin-left: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .mic-button.active {
+    background-color: rgba(255, 0, 0, 0.497);
+  }
+  
+  .mic-button.static {
+    background-color: #007bffba;
+  }
+  
+.mic-button:hover{
+    opacity: 0.8;
+}
