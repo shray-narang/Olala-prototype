@@ -18,21 +18,15 @@ const VideoPlayer = ({ option, handleBlobReady }) => {
     'https://hotel-ai-prototype.s3.eu-north-1.amazonaws.com/7.mp4',
   ];
 
+
   useEffect(() => {
     const currentVideo = videoRefs.current[option];
     if (currentVideo) {
-      currentVideo.load();
-      const playPromise = currentVideo.play();
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          console.log('Playback started automatically.');
-        })
-        .catch((error) => {
-          console.log('Auto-play was prevented.', error);
-        });
-      }
+      currentVideo.src = videoUrls[option];
+      // currentVideo.load();
     }
   }, [option]);
+
 
   const handleBegin = () => {
     setShowMic(true);
@@ -61,16 +55,20 @@ const VideoPlayer = ({ option, handleBlobReady }) => {
           </video>
         ))}
       </div>
-      <video
-        ref={el => videoRefs.current[option] = el}
-        className='video-player'
-        preload="auto"
-        onPlay={() => setIsPlaying(true)}
-        onPause={() => setIsPlaying(false)}
-      >
-        <source src={videoUrls[option]} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <div className="video-wrapper">
+        <div className="video-background"></div>
+        <video
+          ref={el => videoRefs.current[option] = el}
+          className='video-player'
+          preload="auto"
+          autoPlay
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+        >
+          <source src={videoUrls[option]} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <div className="play-pause-button">
         {option === 0 && !showMic && (
           <button className="begin-button" onClick={handleBegin}>
