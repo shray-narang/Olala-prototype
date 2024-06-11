@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './VideoPlayer.css'; // Assuming you have a CSS file for styles
+import './VideoPlayer.css';
 import MicButton from 'components/MicButton/MicButton';
 
 const VideoPlayer = ({ option, handleBlobReady }) => {
+  console.log('VideoPlayer component re-rendered');
   const videoRefs = useRef([]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showMic, setShowMic] = useState(option !== 0);
@@ -23,7 +24,7 @@ const VideoPlayer = ({ option, handleBlobReady }) => {
     const currentVideo = videoRefs.current[option];
     if (currentVideo) {
       currentVideo.src = videoUrls[option];
-      // currentVideo.load();
+      currentVideo.load();
     }
   }, [option]);
 
@@ -47,16 +48,18 @@ const VideoPlayer = ({ option, handleBlobReady }) => {
         {videoUrls.map((url, index) => (
           <video
             key={index}
+            className={`video-player-${option === index ? '' : 'inactive'}`}
             ref={el => videoRefs.current[index] = el}
             preload="auto"
           >
             <source src={url} type="video/mp4" />
-            Your browser does not support the video tag.
           </video>
         ))}
       </div>
       <div className="video-wrapper">
-        <div className="video-background"></div>
+      <div className="video-background">
+        <img src="/last_frame.jpg" alt="Background Image" className="background-image" />
+      </div>
         <video
           ref={el => videoRefs.current[option] = el}
           className='video-player'
@@ -66,7 +69,6 @@ const VideoPlayer = ({ option, handleBlobReady }) => {
           onPause={() => setIsPlaying(false)}
         >
           <source src={videoUrls[option]} type="video/mp4" />
-          Your browser does not support the video tag.
         </video>
       </div>
       <div className="play-pause-button">

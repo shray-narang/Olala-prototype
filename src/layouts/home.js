@@ -4,7 +4,6 @@ import deepgram from "api/deepgram";
 import openapi from "api/openapi";
 import './home.css';
 import VideoPlayer from 'components/VideoPlayer/VideoPlayer';
-import MicButton from 'components/MicButton/MicButton';
 
 const Home = () => {
   const [text, setText] = useState('');
@@ -26,18 +25,21 @@ const Home = () => {
       console.log("empty transcription");
     }
   };
-
+  const handleTestClick = () => {
+    setOptionNumber(optionNumber + 1);
+    console.log(optionNumber);
+  }
 
   return (
     <div className="App">
+          {/* <button onClick={handleTestClick}>increment</button> */}
       <header className="App-header">
       <VideoPlayer option={optionNumber} handleBlobReady={handleBlobReady}/>
-        {/* <div className="input-container">
-          <MicButton whenBlobReady={handleBlobReady}/>
-        </div> */}
         <div className="output-container">
         </div>
       </header>
+
+
     </div>
   );
 };
