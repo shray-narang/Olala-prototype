@@ -2,8 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './VideoPlayer.css';
 import MicButton from 'components/MicButton/MicButton';
 
-const VideoPlayer = ({ option, handleBlobReady }) => {
-  console.log('VideoPlayer component re-rendered');
+const VideoPlayer = ({ option, handleBlobReady, forceRefresh }) => {
   const videoRefs = useRef([]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showMic, setShowMic] = useState(option !== 0);
@@ -26,7 +25,7 @@ const VideoPlayer = ({ option, handleBlobReady }) => {
       currentVideo.src = videoUrls[option];
       currentVideo.load();
     }
-  }, [option]);
+  }, [option, forceRefresh]);
 
 
   const handleBegin = () => {
@@ -56,10 +55,10 @@ const VideoPlayer = ({ option, handleBlobReady }) => {
           </video>
         ))}
       </div>
-      <div className="video-wrapper">
       <div className="video-background">
         <img src="/last_frame.jpg" alt="Background Image" className="background-image" />
       </div>
+      <div className="video-wrapper">
         <video
           ref={el => videoRefs.current[option] = el}
           className='video-player'
