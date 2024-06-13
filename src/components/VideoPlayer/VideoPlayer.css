@@ -19,7 +19,7 @@
 
 .background-image {
   position: relative;
-  width: 95vw;
+  width: 85vw;
   height: auto;
   object-fit: cover;
   z-index: 1;
@@ -28,7 +28,7 @@
 .video-player {
   position: relative;
   z-index: 3;
-  width: 95vw;
+  width: 85vw;
   height: auto;
 }
 
